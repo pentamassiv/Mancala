@@ -1,5 +1,5 @@
 [![dependency status](https://deps.rs/repo/github/pentamassiv/Mancala/status.svg)](https://deps.rs/repo/github/pentamassiv/Mancala)
-[![Build](https://img.shields.io/github/workflow/status/pentamassiv/Mancala/Build/main)](https://github.com/pentamassiv/Mancala/actions/workflows/build.yaml)
+[![Build](https://github.com/pentamassiv/Mancala/actions/workflows/build.yaml/badge.svg)](https://github.com/pentamassiv/Mancala/actions/workflows/build.yaml)
 ![dependabot status](https://img.shields.io/badge/dependabot-enabled-025e8c?logo=Dependabot)
 
 # Mancala

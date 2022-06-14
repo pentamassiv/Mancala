@@ -1,3 +1,7 @@
+[![dependency status](https://deps.rs/repo/github/pentamassiv/Mancala/status.svg)](https://deps.rs/repo/github/pentamassiv/Mancala)
+[![Build](https://img.shields.io/github/workflow/status/pentamassiv/Mancala/Build/main)](https://github.com/pentamassiv/Mancala/actions/workflows/build.yaml)
+![dependabot status](https://img.shields.io/badge/dependabot-enabled-025e8c?logo=Dependabot)
+
 # Mancala
 This is a CLI to play Mancala. There are different rules out there but this version of the game has the following rules:
 

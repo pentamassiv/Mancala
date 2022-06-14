@@ -149,10 +149,16 @@ impl Board {
 impl std::fmt::Display for Board {
     // This trait requires `fmt` with this exact signature.
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        write!(f, "|  ").unwrap();
+        for idx in (START_IDX_PLAYER_B..MANCALA_IDX_PLAYER_B).rev() {
+            write!(f, "|{:02}", idx).unwrap();
+        }
+        writeln!(f, "|  |").unwrap();
+
         write!(f, "|  |").unwrap();
         // START_IDX_PLAYER_B, MANCALA_IDX_PLAYER_A
         for idx in (START_IDX_PLAYER_B..MANCALA_IDX_PLAYER_B).rev() {
-            write!(f, "{:02}|", self.holes[idx].count(),).unwrap();
+            write!(f, "{:02}|", self.holes[idx].count()).unwrap();
         }
         writeln!(f, "  |").unwrap();
 
@@ -166,8 +172,14 @@ impl std::fmt::Display for Board {
         write!(f, "|  |").unwrap();
         // START_IDX_PLAYER_B, MANCALA_IDX_PLAYER_A
         for idx in START_IDX_PLAYER_A..MANCALA_IDX_PLAYER_A {
-            write!(f, "{:02}|", self.holes[idx].count(),).unwrap();
+            write!(f, "{:02}|", self.holes[idx].count()).unwrap();
         }
-        writeln!(f, "  |")
+        writeln!(f, "  |").unwrap();
+
+        write!(f, "|  ").unwrap();
+        for idx in START_IDX_PLAYER_A..MANCALA_IDX_PLAYER_A {
+            write!(f, "|{:02}", idx).unwrap();
+        }
+        writeln!(f, "|  |")
     }
 }

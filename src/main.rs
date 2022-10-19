@@ -1,4 +1,6 @@
-use mancala::*;
+#![deny(clippy::pedantic)]
+
+use mancala::{Board, Player};
 fn main() {
     println!("Setting up the game");
     let mut board = Board::new();

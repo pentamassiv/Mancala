@@ -10,7 +10,7 @@ const MANCALA_IDX_PLAYER_A: usize = NO_OF_HOLES_OF_EACH_PLAYER;
 const MANCALA_IDX_PLAYER_B: usize = 2 * NO_OF_HOLES_OF_EACH_PLAYER + 1;
 
 /// There can be two players
-#[derive(Debug, Copy, Clone, PartialEq)]
+#[derive(Debug, Copy, Clone, PartialEq, Eq)]
 pub enum Player {
     A,
     B,
@@ -34,7 +34,7 @@ impl Hole {
         marbles
     }
     /// Returns the number of marbles in the hole
-    fn count(&self) -> i8 {
+    fn count(self) -> i8 {
         self.marbles
     }
 }
@@ -47,6 +47,7 @@ pub struct Board {
 
 impl Board {
     /// Create, initialize and return a new mancala board
+    #[must_use]
     pub fn new() -> Self {
         let init_hole = Hole {
             marbles: STARTING_MARBLES,
@@ -96,7 +97,7 @@ impl Board {
         }
     }
 
-    /// Test if the player chose one of their own holes. If they did, call the choose_hole function. Otherwise warn the player and let them chose again.
+    /// Test if the player chose one of their own holes. If they did, call the `choose_hole` function. Otherwise warn the player and let them chose again.
     pub fn player_choses_hole(&mut self, player: Player, no: usize) -> Player {
         let valid_no = match no {
             MANCALA_IDX_PLAYER_A | MANCALA_IDX_PLAYER_B => false, // Mancalas can not be chosen
@@ -136,9 +137,8 @@ impl Board {
         if marbles_on_player_a_side == 0 || marbles_on_player_b_side == 0 {
             if marbles_on_player_a_side > marbles_on_player_b_side {
                 return Some(Player::A);
-            } else {
-                return Some(Player::B);
             }
+            return Some(Player::B);
         }
         None
     }

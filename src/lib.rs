@@ -1,3 +1,6 @@
+#![allow(clippy::similar_names)]
+#![allow(clippy::cast_sign_loss)]
+
 const STARTING_MARBLES: i8 = 4;
 const NO_OF_HOLES_OF_EACH_PLAYER: usize = 6;
 
@@ -112,8 +115,10 @@ impl Board {
             player
         }
     }
+
     /// Test if one of the players already won
     /// Returns the winning player
+    #[must_use]
     pub fn test_if_won(&self) -> Option<Player> {
         // See if one of the players already has the majority of marbles
         if self.holes[MANCALA_IDX_PLAYER_A].count() as usize
@@ -144,6 +149,12 @@ impl Board {
     }
 }
 
+impl Default for Board {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 // To use the `{}` marker, the trait `fmt::Display` must be implemented
 // manually for the type.
 impl std::fmt::Display for Board {
@@ -151,7 +162,7 @@ impl std::fmt::Display for Board {
     fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
         write!(f, "|  ").unwrap();
         for idx in (START_IDX_PLAYER_B..MANCALA_IDX_PLAYER_B).rev() {
-            write!(f, "|{:02}", idx).unwrap();
+            write!(f, "|{idx:02}",).unwrap();
         }
         writeln!(f, "|  |").unwrap();
 
@@ -178,7 +189,7 @@ impl std::fmt::Display for Board {
 
         write!(f, "|  ").unwrap();
         for idx in START_IDX_PLAYER_A..MANCALA_IDX_PLAYER_A {
-            write!(f, "|{:02}", idx).unwrap();
+            write!(f, "|{idx:02}").unwrap();
         }
         writeln!(f, "|  |")
     }

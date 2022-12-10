@@ -1,4 +1,6 @@
 #![deny(clippy::pedantic)]
+#![allow(clippy::similar_names)]
+#![allow(clippy::cast_sign_loss)]
 
 use mancala::{Board, Player};
 fn main() {
@@ -8,9 +10,9 @@ fn main() {
     let mut next_player = Player::A;
 
     while winner.is_none() {
-        println!("{}", board);
+        println!("{board}");
         println!();
-        println!("Player {:?}, select a hole:", next_player);
+        println!("Player {next_player:?}, select a hole:");
 
         let selected_hole = get_selected_hole();
         let selected_hole: usize = match selected_hole {
@@ -22,7 +24,7 @@ fn main() {
         winner = board.test_if_won();
     }
 
-    println!("{}", board);
+    println!("{board}");
     println!();
     println!("Congratulations {:?}, you won!", winner.unwrap());
 }

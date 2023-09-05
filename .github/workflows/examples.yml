@@ -20,7 +20,7 @@ jobs:
           - nightly
           - "1.63.0"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/install_deps
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@master
@@ -37,7 +37,7 @@ jobs:
           - nightly
          # - "1.63.0"
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/install_deps
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@master
